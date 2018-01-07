@@ -1,0 +1,123 @@
+<div class="container">
+  <div class="row"> 
+   
+      <div class="col-md-8">
+          <div>
+              <div class="panel panel-default"> 
+                  <div class="panel-body text-center">
+                    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
+                      <agm-marker [latitude]="lat" [longitude]="lng" ></agm-marker>
+                    </agm-map>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="well well-sm">
+              <form (ngSubmit)="onSubmit(fm)" #fm="ngForm" class="form-horizontal">
+      
+                  <fieldset>
+                      <legend class="text-center header">Contact us</legend>
+                      <div class="form-group">
+                         <div class="col-md-10 col-md-offset-1"
+                          [ngClass]="{ 
+                            'has-danger': fm.form.controls.name?.invalid && (fm.form.controls.name?.dirty || fm.form.controls.name?.touched),
+                           'has-success': fm.form.controls.name?.valid && (fm.form.controls.name?.dirty || fm.form.controls.name?.touched)
+                      }">
+                              <input ngModel name="name"  required minlength="3" type="text" placeholder="Name" class="form-control">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                         <div class="col-md-10 col-md-offset-1"
+                          [ngClass]="{
+                           'has-danger': fm.form.controls.company?.invalid && (fm.form.controls.company?.dirty || fm.form.controls.company?.touched),
+                           'has-success': fm.form.controls.company?.valid && (fm.form.controls.company?.dirty || fm.form.controls.company?.touched)
+                      }">
+                              <input ngModel name="company" minlength="3" required type="text" placeholder="Organisation Name" class="form-control">
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-md-10 col-md-offset-1"
+                          [ngClass]="{
+                           'has-danger': fm.form.controls.email?.invalid && (fm.form.controls.email?.dirty || fm.form.controls.email?.touched),
+                           'has-success': fm.form.controls.email?.valid && (fm.form.controls.email?.dirty || fm.form.controls.email?.touched)
+                      }"> 
+                       <input type="email"
+                              class="form-control"
+                              ngModel name="email"
+                              placeholder="Email ID"
+                              required
+                              pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                     </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-md-10 col-md-offset-1">
+                               
+                                  <div class="col-md-12 pad-coll"
+                                  [ngClass]="{
+                                   'has-danger': fm.form.controls.country?.invalid && (fm.form.controls.country?.dirty || fm.form.controls.country?.touched),
+                                   'has-success': fm.form.controls.country?.valid && (fm.form.controls.country?.dirty || fm.form.controls.country?.touched)
+                              }"> 
+                              <select (change)="onChangeCountry($event.target.value)" class="form-control" ngModel name="country" required>
+                                  <option value="">Select Country</option>
+                                    <option *ngFor="let x of listService.CountryData" [value]="x.id" >{{x.country_name}}</option>
+                                </select>
+                              </div>
+                              <div class="col-md-12 pad-coll"
+                                  [ngClass]="{
+                                   'has-danger': fm.form.controls.state?.invalid && (fm.form.controls.state?.dirty || fm.form.controls.state?.touched),
+                                   'has-success': fm.form.controls.state?.valid && (fm.form.controls.state?.dirty || fm.form.controls.state?.touched)
+                              }"> 
+                                <select (change)="onChangeState($event.target.value)" class="form-control" ngModel name="state" required>
+                                    <option value="">Select State</option>
+                                      <option *ngFor="let x of StateData.StateData" [value]="x.id" >{{x.state_name}}</option>
+                                  </select>
+                                  </div>
+                                  <div class="col-md-12 pad-coll"
+                                  [ngClass]="{
+                                   'has-danger': fm.form.controls.city?.invalid && (fm.form.controls.city?.dirty || fm.form.controls.city?.touched),
+                                   'has-success': fm.form.controls.city?.valid && (fm.form.controls.city?.dirty || fm.form.controls.city?.touched)
+                              }"> 
+                                  <select class="form-control" ngModel name="city" required>
+                                      <option value="">Select City</option>
+                                        <option *ngFor="let x of CityData.CityData" [value]="x.id" >{{x.city_name}}</option>
+                                    </select>
+                                    </div>
+                                    
+
+                           </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-md-10 col-md-offset-1">
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <div class="col-md-12 text-center">
+                              <button type="submit" class="btn btn-primary btn-md col-md-12" [disabled]="fm.invalid">Submit</button>
+                          </div>
+                      </div>
+                  </fieldset>
+              </form>
+
+              <div class="alert alert-success alert-dismissable fade in" *ngIf="alert">
+                  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                  <strong>Thanks for connecting with us..!</strong>
+                </div> 
+
+                <div class="alert alert-danger alert-dismissable fade in" *ngIf="failAlert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Oops try again..!</strong>
+                  </div> 
+                
+          </div>
+      </div>
+     
+  </div>
+</div>
+
+
+ 
