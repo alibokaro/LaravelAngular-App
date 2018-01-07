@@ -25,7 +25,7 @@ import {ListService} from './service/list.service';
     HttpClientModule,
     FormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCP2XAWIUvu_0mNAT8SVClyrCVuI_zNXps'
+      apiKey: 'enter google map apiKey'
     })
   ],
   providers: [ListService],

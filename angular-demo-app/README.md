@@ -6,8 +6,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
 
+## Add apiKey for google map
+Go to this link `https://developers.google.com/maps/documentation/javascript/get-api-key` and follow the steps to get apiKey and add this in app.module.ts code eg:
+
+`AgmCoreModule.forRoot({
+      apiKey: 'XXXXXXXXXXXXXXXX'
+    })`
+    
+## Code scaffolding
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
