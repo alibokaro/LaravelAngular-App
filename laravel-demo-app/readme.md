@@ -7,6 +7,21 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## Database configuration and commands 
+
+To run this demo app you need to create mysql database and configure the .env file
+eg: `
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=demoapp
+DB_USERNAME=root
+DB_PASSWORD=
+`
+After that you need to run this command `php artisan migrate` to create tables into the database.
+
+Please insert some relevant data in country,state and city table manually
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
